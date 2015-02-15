@@ -1,0 +1,20 @@
+{
+  "name": "product-info",
+  "version": "0.0.1",
+  "description": "Product information finder given a URI",
+  "keywords": [],
+  "author": "Ben Magyar <magyar@american.edu>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bmagyar/product-info.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.2",
+    "gulp-mocha": "^2.0.0",
+    "mocha": "*",
+    "should": "*"
+  },
+  "main": "index"
+}
