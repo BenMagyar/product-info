@@ -1,29 +1,59 @@
-
 # product-info
 
-  Product information finder given a URI
+Extracts limited product information for a given web page.
 
-## License 
+## Limitations
 
-(The MIT License)
+Current implementation is crude with generic (non-schema.org) websites
+being limited to only `name` and `price` information.
 
-Copyright (c) 2015 Ben Magyar &lt;magyar@american.edu&gt;
+When a URL is provided the page is opened in [jsdom](https://github.com/tmpvar/jsdom),
+and is set to fetch and process external `script` tags. To skip this pass in the
+HTML of the page instead.
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+## Installation
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+`npm install product-info`
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+## Return
+
+A javascript object is returned with a similar structure to the
+[schema.org product schema](http://schema.org/Product); however, canonical
+references were removed.
+
+#### Example
+
+```
+// Returned
+{
+  name: 'Blue Shirt',
+  description: 'A blue colored shirt',
+  offers: {
+    price: '20.00',
+    priceCurrency: 'USD',
+    availability: 'InStock'
+  }
+}
+```
+
+## Methods
+
+### Parser
+#### parser(HTML, callback)
+Method for parsing HTML into a product.
+
+```
+producer.parse('http://my-schema-url.org', function(err, product){
+  // product returned
+});
+```
+
+#### parser(URL, callback)
+Method for parsing a URL into a product. Waits until all external
+script tags are fetched and have run.
+
+```
+producer.parse('http://my-schema-url.org', function(err, product){
+  // product returned
+});
+```

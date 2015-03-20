@@ -2,13 +2,15 @@
 
 // Big gulps, huh?
 var gulp = require('gulp');
-var mocha = require('gulp-mocha');
+var mocha = require('gulp-spawn-mocha');
 var jshint = require('gulp-jshint');
 
 gulp.task('test', function(){
   gulp.src(['./test/*.js','./test/**/*.js'], { read:false })
     .pipe(mocha({
       reporter: 'spec',
+    }).on('error', function(err){
+      console.log(err);
     }));
 });
 

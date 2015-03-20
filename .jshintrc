@@ -1,0 +1,4 @@
+{
+  "node": true,     // Node.JS
+  "mocha": true     // Mocha
+}
