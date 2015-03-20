@@ -6,7 +6,7 @@
   "author": "Ben Magyar <magyar@american.edu>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bmagyar/product-info.git"
+    "url": "git://github.com/BenMagyar/product-info.git"
   },
   "dependencies": {
     "cheerio": "^0.18.0",
